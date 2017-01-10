@@ -5,7 +5,10 @@ var mongoose = require('mongoose'),
 
 module.exports = function (app) {
   app.route('/urls/:id').get(function(req, res){
-    var url = new Url(req.params);
-    res.status(200).send(req.params);
+    res.status(301).send(req.params);
+  });
+
+  app.route('/urls/:id').delete(function(req, res){
+    res.status(200).send('deleted!');
   });
 };

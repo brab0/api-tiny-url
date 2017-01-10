@@ -1,29 +1,10 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    User = mongoose.model('User');
+    Stats = mongoose.model('Stats');
 
 module.exports = function (app) {
-  app.route('/users').post(function(req, res){
-    res.status(201).send({
-      id : 'jibao'
-    });
-  });
-
-  app.route('/users').delete(function(req, res){
-    res.status(200).send({});
-  });
-
-  app.route('/users/:userId/urls').post(function(req, res){
-    res.status(200).send({
-      id : '23094',
-      hits : 0,
-      url : 'http://chaordic.com/123123',
-      shortUrl : 'http://cd.ic/12',
-    });
-  });
-
-  app.route('/users/:userId/stats').get(function(req, res){
+  app.route('/stats').get(function(req, res){
     res.status(200).send({
       hits: 193841, // Quantidade de hits em todas as urls do sistema
       urlCount: 2512, // Quantidade de urls cadastradas
@@ -42,5 +23,10 @@ module.exports = function (app) {
         }
       ]
     });
+  });
+
+  app.route('/stats/:id').get(function(req, res){
+    var stats = new Stats(req.params);
+    res.status(200).send(req.params);
   });
 };
