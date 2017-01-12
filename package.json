@@ -10,8 +10,9 @@
     "npm": ">=1.4.28"
   },
   "dependencies": {
+    "body-parser": "^1.13.1",
     "express": "^4.13.1",
     "mongoose": "~4.2.3",
-    "body-parser": "^1.13.1"
+    "path": "^0.12.7"
   }
 }

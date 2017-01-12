@@ -1,7 +1,22 @@
-var app = require('express')();
+var app = require('express')(),
+		load = require('./load');
 
-require('./load')(app);
+// carrega body-parser middleware
+load.bodyParser(app);
 
+// carrega CORS middleware
+load.cors(app);
+
+// carrega models(schemes + methods) mongoose
+load.models();
+
+// carrega serviços (routes + controllers)
+load.services(app);
+
+// carrega e abre conexão com o MongoDB
+load.database();
+
+// levanta servidor
 app.listen(3000, function(){
-	console.log('Api rodando na porta 3000!');
+	console.log('Servidor rodando na porta 3000!');
 });

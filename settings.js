@@ -10,7 +10,8 @@ module.exports = {
     },
     debug: false
   },
-  modelsPath : './modules/models/',
-  servicesPath : './modules/services/',
-  apiUrl : 'http://localhost:3000/'
+  modelsPath : __dirname + '/core/models/',
+  servicesPath : __dirname + '/core/services/',
+  controllersPath : __dirname + '/core/controllers/',
+  apiDomain : 'http://localhost:3000/'
 };

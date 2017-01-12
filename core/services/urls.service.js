@@ -1,0 +1,27 @@
+'use strict';
+
+var settings = require('../../settings'),
+    urlCtrl = require(settings.controllersPath + 'urls.controller');
+
+module.exports = function (app) {
+
+  // retorna url encurtada
+  app.route('/urls/:id').get(function(req, res){    
+    urlCtrl.getById(req.params.id, function(code, data){
+      if(code === 404){
+        res.status(code).send(data);
+      }
+      else{
+        res.writeHead(code, data);
+        res.end();
+      }
+    });
+  });
+
+  // deleta url pelo id
+  app.route('/urls/:id').delete(function(req, res){
+    urlCtrl.removeById(req.params.id, function(code, data){
+      res.status(code).send(data);
+    });
+  });
+};
