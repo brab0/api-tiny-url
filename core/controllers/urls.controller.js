@@ -1,11 +1,12 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-    Url = mongoose.model('Url'),
+let mongoose = require('mongoose');
+
+let Url = mongoose.model('Url'),
     User = mongoose.model('User');
 
 module.exports.getById = function(id, _callback) {
-  var url = new Url();
+  let url = new Url();
 
   url.getById(id, function(err, data){
     if(!data.url || err){ // não encontrou url || erro de cast
@@ -22,7 +23,7 @@ module.exports.getById = function(id, _callback) {
 };
 
 module.exports.removeById = function(urlId, _callback) {
-  var url = new Url(),
+  let url = new Url(),
       user = new User();
 
   url.removeById(urlId, function(err, data){

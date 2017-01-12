@@ -1,12 +1,12 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-    settings = require('../../settings');
+let mongoose = require('mongoose'),
+    config = require('config');
 
-var Url = mongoose.model('Url');
+let Url = mongoose.model('Url');
 
 module.exports.getAll = function (_callback) {
-  var url = new Url();
+  let url = new Url();
 
   url.getAll(function(err, urls){
     if(!urls){
@@ -18,14 +18,14 @@ module.exports.getAll = function (_callback) {
       _callback(200, {
         hits: url.countHits(urls),
         urlCount: urls.length,
-        topUrls: url.getTopUrls(urls, settings.apiDomain)
+        topUrls: url.getTopUrls(urls, config.apiDomain)
       });
     }
   });
 };
 
 module.exports.getById = function (id, _callback) {
-  var url = new Url();
+  let url = new Url();
 
   url.getById(id, function(err, data){
     if(!data){
@@ -38,7 +38,7 @@ module.exports.getById = function (id, _callback) {
         id : url._id,
         hits : url.hits,
         url : url.url,
-        shortUrl : settings.apiDomain + url.urlCode
+        shortUrl : config.apiDomain + url.urlCode
       });
     }
   });

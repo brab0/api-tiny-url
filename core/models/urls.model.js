@@ -1,8 +1,8 @@
 'use strict';
 
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
-var UrlScheme = new mongoose.Schema({
+let UrlScheme = new mongoose.Schema({
     hits: {
       type: Number,
       default: 0
@@ -10,12 +10,14 @@ var UrlScheme = new mongoose.Schema({
     url: {
       type: String,
       trim: true,
-      default: ''
+      default: '',
+      required: true
     },
     urlCode: { // em vez de shortUrl para prever escalabilidade (caso domínio seja trocado ou seja selecionável)
       type: String,
       trim: true,
-      default: ''
+      default: '',
+      required: true
     },
     created: {
       type: Date,

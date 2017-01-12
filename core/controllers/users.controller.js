@@ -1,15 +1,15 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-    settings = require('../../settings');
+let mongoose = require('mongoose'),
+    config = require('config');
 
-var User = mongoose.model('User'),
-    Url = mongoose.model('Url');
+let Url = mongoose.model('Url'),
+    User = mongoose.model('User');
 
 module.exports.addNew = function (obj, _callback) {
 
   // instancia model
-  var user = new User(obj);
+  let user = new User(obj);
 
   user.addNew(function(err, data){
     if(err){ // duplicate key
@@ -32,7 +32,7 @@ module.exports.addNew = function (obj, _callback) {
 
 // remove user by :userId
 module.exports.removeById = function (id, _callback) {
-  var user = new User();
+  let user = new User();
 
   user.removeById(id, function(err, data){
     if(err){
@@ -40,7 +40,7 @@ module.exports.removeById = function (id, _callback) {
     }
     else if(data.result.n == 0){ // remoção sem efeito
       _callback(404, {
-        msg : 'Usuário não encontrado.'
+        msg : 'O id do usuário não foi encontrado.'
       });
     }
     else{
@@ -52,7 +52,7 @@ module.exports.removeById = function (id, _callback) {
 // add url
 module.exports.addUrl = function (req, _callback) {
 
-  var user = new User();
+  let user = new User();
 
   user.getById(req.params.userId, function(err, data){
     if(err){
@@ -70,11 +70,11 @@ module.exports.addUrl = function (req, _callback) {
          de código repetido(se usasse somente timestamp) em multiplas instâncias.
       */
 
-      var now = new Date();
+      let now = new Date();
 
-      var urlCode = (parseInt(data._id) + parseInt(now.getTime())).toString(36);
+      let urlCode = (parseInt(data._id) + parseInt(now.getTime())).toString(36);
 
-      var url = new Url({
+      let url = new Url({
         url : req.body.url,
         urlCode : urlCode
       });
@@ -93,7 +93,7 @@ module.exports.addUrl = function (req, _callback) {
                 id : u._id,
                 hits : u.hits,
                 url : u.url,
-                shortUrl : settings.apiDomain + u.urlCode
+                shortUrl : config.apiDomain + u.urlCode
               });
             }
           });
@@ -105,7 +105,7 @@ module.exports.addUrl = function (req, _callback) {
 
 // get status by user
 module.exports.getStatsByUserId = function (id, _callback) {
-  var user = new User();
+  let user = new User();
 
   user.getStatsByUserId(id, function(err, data){
     if(err){
@@ -117,12 +117,12 @@ module.exports.getStatsByUserId = function (id, _callback) {
       });
     }
     else {
-      var url = new Url();
+      let url = new Url();
 
       _callback(200, {
         hits: url.countHits(data.urls),
         urlCount: data.urls.length,
-        topUrls: url.getTopUrls(data.urls, settings.apiDomain)
+        topUrls: url.getTopUrls(data.urls, config.apiDomain)
       });
     }
   });

@@ -1,14 +1,15 @@
 'use strict';
 
-var bodyParser = require('body-parser'),
+let bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     path = require('path'),
-    settings = require('./settings');
+    config = require('config');
 
 // manipulação de parametros
 module.exports.bodyParser = function(app){
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
+  app.use(bodyParser.json({ type: 'application/json'}));
 };
 
 // Previne CSRF via CORS
@@ -22,33 +23,27 @@ module.exports.cors = function(app){
   });
 };
 
-/*
-  Pela quantidade de arquivos(models e services) da api,
-  não achei necessário automatizar os requires com for's,
-  wildcards e globs. Preferi deixar simples.
-*/
-
-// carrega models(schemes + methods) mongoose
+// registra e carrega models(schemes + methods) mongoose
 module.exports.models = function(){
-  require(path.join(settings.modelsPath, 'urls.model'));
-  require(path.join(settings.modelsPath, 'users.model'));
+  require(path.join(__dirname + config.modelsPath, 'urls.model'));
+  require(path.join(__dirname + config.modelsPath, 'users.model'));
 };
 
 // carrega serviços (routes + controllers)
 module.exports.services = function(app, servicesPath){
-  require(path.join(settings.servicesPath, 'urls.service'))(app);
-  require(path.join(settings.servicesPath, 'users.service'))(app);
-  require(path.join(settings.servicesPath, 'stats.service'))(app);
+  require(path.join(__dirname + config.servicesPath, 'urls.service'))(app);
+  require(path.join(__dirname + config.servicesPath, 'users.service'))(app);
+  require(path.join(__dirname + config.servicesPath, 'stats.service'))(app);
 };
 
 // abre conexão com MongoDB
 module.exports.database = function () {
-  mongoose.connect(settings.db.uri + settings.db.name, settings.db.options, function (err) {
+  mongoose.connect(config.db.uri + config.db.name, config.db.options, function (err) {
     if (err) {
       console.error('Oops! O Mongo não subiu!!!');
       console.log(err);
     } else {
-      mongoose.set('debug', settings.db.debug);
+      mongoose.set('debug', config.db.debug);
     }
   });
 };

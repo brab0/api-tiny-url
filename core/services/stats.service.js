@@ -1,11 +1,11 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-    settings = require('../../settings');
+let mongoose = require('mongoose'),
+    config = require('config');
 
-var Url = mongoose.model('Url');
+let Url = mongoose.model('Url');
 
-var statsCtrl = require(settings.controllersPath + 'stats.controller')
+let statsCtrl = require("../../" + config.controllersPath + 'stats.controller')
 
 module.exports = function (app) {
 

@@ -1,12 +1,12 @@
 'use strict';
 
-var settings = require('../../settings'),
-    urlCtrl = require(settings.controllersPath + 'urls.controller');
+let config = require('config'),
+    urlCtrl = require("../../" + config.controllersPath + 'urls.controller');
 
 module.exports = function (app) {
 
   // retorna url encurtada
-  app.route('/urls/:id').get(function(req, res){    
+  app.route('/urls/:id').get(function(req, res){
     urlCtrl.getById(req.params.id, function(code, data){
       if(code === 404){
         res.status(code).send(data);
