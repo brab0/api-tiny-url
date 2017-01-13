@@ -46,7 +46,7 @@ describe('Urls', () => {
           .post('/users/' + res.id + '/urls')
           .send(url)
           .end((err, res) => {
-            request // supertest para manipular 301. O chai.request não estava conseguindo.
+            request // supertest para manipular 301. O chai.request não estava conseguindo
             .get('/urls/' + res.body.id)
             .expect(301, done);
           });

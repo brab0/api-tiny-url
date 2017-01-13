@@ -5,7 +5,7 @@ let config = require('config'),
 
 module.exports = function (app) {
 
-  // retorna url encurtada
+  // redirect para url encurtada
   app.route('/urls/:id').get(function(req, res){
     urlCtrl.getById(req.params.id, function(code, data){
       if(code === 404){
@@ -13,7 +13,7 @@ module.exports = function (app) {
       }
       else{
         res.writeHead(code, data);
-        res.end();        
+        res.end();
       }
     });
   });
