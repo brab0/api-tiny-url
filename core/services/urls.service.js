@@ -13,7 +13,7 @@ module.exports = function (app) {
       }
       else{
         res.writeHead(code, data);
-        res.end();
+        res.end();        
       }
     });
   });

@@ -1,23 +1,26 @@
 process.env.NODE_ENV = 'test';
 
-let mongoose = require("mongoose");
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-let server = require('../server');
-let should = chai.should();
+let mongoose = require("mongoose"),
+    chai = require('chai'),
+    chaiHttp = require('chai-http'),
+    server = require('../server'),
+    should = chai.should();
 
-let User = mongoose.model('User');
+let User = mongoose.model('User'),
+    Url = mongoose.model('Url');
 
 chai.use(chaiHttp);
 
 describe('Users', () => {
   beforeEach((done) => { //Limpa collection antes do teste
+    Url.remove({}, (err) => {
       User.remove({}, (err) => {
          done();
       });
+    });
   });
 
-  describe('Status por Usuário', () => {
+  describe('Retornar status por usuário', () => {
     describe('GET /users/:userId/stats', () => {
       it('should return 404 code and a String msg if user was not found', (done) => {
         chai.request(server)
@@ -153,7 +156,7 @@ describe('Users', () => {
         });
       });
 
-      it('should add a new url, make it shorten and return 201(created) with an Url Object', (done) => {
+      it('should add a new url, make it shorter and return 201(created) with an Url Object', (done) => {
         let url = { url : 'http://chaordic.com.br/folks'};
         let user = new User({ id : 'jibao' });
 
@@ -197,7 +200,7 @@ describe('Users', () => {
           .delete('/users/' + user.id)
           .end((err, res) => {
             res.should.have.status(204);
-            res.body.should.be.a('object');            
+            res.body.should.be.a('object');
 
             done();
           });

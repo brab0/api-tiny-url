@@ -9,7 +9,7 @@ module.exports.getById = function(id, _callback) {
   let url = new Url();
 
   url.getById(id, function(err, data){
-    if(!data.url || err){ // não encontrou url || erro de cast
+    if(!data || err){ // não encontrou url || erro de cast
       _callback(404, {
         msg : "O id da url não foi encontrado."
       });

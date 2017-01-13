@@ -16,7 +16,7 @@ module.exports = function (app) {
     });
   });
 
-  // retorna status de um usuário específico
+  // retorna status de uma url específica
   app.route('/stats/:id').get(function(req, res){
     statsCtrl.getById(req.params.id, function(code, data){
       res.status(code).send(data);
