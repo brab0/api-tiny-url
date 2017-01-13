@@ -20,6 +20,6 @@
   },
   "scripts": {
     "start": "export NODE_ENV=dev && node server.js",
-    "test": "mocha"
+    "test": "mocha -t 10000"
   }
 }

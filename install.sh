@@ -41,7 +41,7 @@ clear
 
 #pm2
 echo '********************************************'
-echo '* Instalando Gerenciador de Processo - PM2 *'
+echo '* Instalando Gerenciador de Processos - PM2 *'
 echo '********************************************'
 sudo npm install pm2 -g
 
@@ -56,23 +56,22 @@ clear
 
 #download api
 echo '***********************************'
-echo '* Baixando API Tiny URl do Github *'
+echo '* Clonando API Tiny URl do Github *'
 echo '***********************************'
 sudo git clone https://github.com/brab0/api-tiny-url.git
 cd api-tiny-url
 
 #download api
-echo '******************************************'
-echo '* Instalando Dependências do projeto API *'
-echo '******************************************'
+echo '**************************************'
+echo '* Instalando Dependências do projeto *'
+echo '**************************************'
 sudo npm install
 sudo npm install-dev
 clear
 
 #fim da instalação
-echo '***************'
-echo '* Tudo pronto *'
-echo '***************'
+echo '***********************'
+echo '* Instalação Completa *'
 
 chmod +x start.sh
 ./start.sh
