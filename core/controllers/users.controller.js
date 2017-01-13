@@ -93,7 +93,7 @@ module.exports.addUrl = function (req, _callback) {
                 id : u._id,
                 hits : u.hits,
                 url : u.url,
-                shortUrl : config.apiDomain + u.urlCode
+                shortUrl : config.apiDomain + ":" + config.apiPort + "/" + u.urlCode
               });
             }
           });
@@ -122,7 +122,7 @@ module.exports.getStatsByUserId = function (id, _callback) {
       _callback(200, {
         hits: url.countHits(data.urls),
         urlCount: data.urls.length,
-        topUrls: url.getTopUrls(data.urls, config.apiDomain)
+        topUrls: url.getTopUrls(data.urls, config.apiDomain + ":" + config.apiPort + "/")
       });
     }
   });

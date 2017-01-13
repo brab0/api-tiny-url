@@ -12,7 +12,7 @@ module.exports.getAll = function (_callback) {
     _callback(200, {
       hits: url.countHits(urls),
       urlCount: urls.length,
-      topUrls: url.getTopUrls(urls, config.apiDomain)
+      topUrls: url.getTopUrls(urls, config.apiDomain + ":" + config.apiPort + "/")
     });
   });
 };
@@ -31,7 +31,7 @@ module.exports.getById = function (id, _callback) {
         id : url._id,
         hits : url.hits,
         url : url.url,
-        shortUrl : config.apiDomain + url.urlCode
+        shortUrl : config.apiDomain + ":" + config.apiPort + "/" + url.urlCode
       });
     }
   });

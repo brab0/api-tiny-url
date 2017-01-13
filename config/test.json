@@ -1,4 +1,5 @@
 {
+  "env" : "test",
   "db" :{
     "name" : "tiny_url_test",
     "uri" : "mongodb://localhost:27017/",
@@ -8,5 +9,6 @@
     },
     "debug": false
   },
-  "apiDomain" : "http://localhost:3000/"
+  "apiDomain" : "http://localhost",
+  "apiPort" : 3002
 }

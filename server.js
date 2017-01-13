@@ -1,4 +1,5 @@
 let app = require('express')(),
+		config = require('config'),
 		load = require('./load');
 
 // carrega body-parser middleware
@@ -17,8 +18,8 @@ load.services(app);
 load.database();
 
 // levanta servidor
-app.listen(3000, function(){
-	console.log('Servidor rodando na porta 3000!');
+app.listen(config.apiPort, function(){
+	console.log('API ' + config.env + ' rodando na porta ' + config.apiPort);
 });
 
 // exporta server para testes

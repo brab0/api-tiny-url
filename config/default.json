@@ -1,14 +1,4 @@
 {
-  "db" :{
-    "name" : "tiny_url",
-    "uri" : "mongodb://localhost:27017/",
-    "options" : {
-      "user" : "",
-      "pass" : ""
-    },
-    "debug": false
-  },
-  "apiDomain" : "http://localhost:3000/",
   "modelsPath" : "/core/models/",
   "servicesPath" : "/core/services/",
   "controllersPath" : "/core/controllers/"

@@ -49,7 +49,6 @@ sudo npm install pm2 -g
 echo '**********************'
 echo '* Instalando MongoDB *'
 echo '**********************'
-mkdir /data/db
 sudo apt-get install mongodb-server
 sudo apt-get install mongodb-clients
 sudo pm2 install pm2-mongodb
