@@ -1,10 +1,21 @@
 #API Tiny Url
 
-##Overview
-API RESTfull para encurtar urls desenvolvida com NodeJs, ExpressJs, Mongoose e MongoDB. 
+##Descrição
+API RESTfull para encurtar urls.
+
+##Ambiente
+```html
+- MongoDB
+- NodeJs
+- ExpressJs
+- Mongoose
+- Mocha, ChaiJs e Supertest
+- PM2, se instalado e executado a partir dos scripts .sh (opcional)
+```
+OBS: Para uma programação mais funcional, foram utilizados recursos e sintaxe pertinentes ao EC6. Por isto, para o funcionamento esperado do projeto, é necessária a instalação da última versão estável do NodeJs.
 
 ##Estrutura
-Para este exercício, foi utilizado um padrão orientado por controllers, models e services. Onde os serviços basicamente são roteadores que só recebem e respondem às requisições. Os controllers tratam de todo o processamento e formatação das requisições e das respostas enviadas. E finalmente, os modelos abarcam os Schemes do mongoose e métodos pertinentes à manipulação do banco de dados. Desta forma, conseguiu-se uma boa modularidade para reaproveitamento de código e fácil manutenção.
+Para este exercício, foi utilizado um padrão orientado por controllers, models e services. Onde os serviços basicamente são roteadores que só recebem e respondem às requisições. Os controllers tratam de todo o processamento e formatação das requisições e das respostas. E finalmente, os models, que registram os Schemes do mongoose e declaram os métodos responsáveis pelas consultas do banco de dados. O objetivo é conseguir uma boa modularidade para reaproveitamento de código e fácil manutenção.
 ```html
 |-config
 |-core
@@ -15,35 +26,33 @@ Para este exercício, foi utilizado um padrão orientado por controllers, models
 ```
 
 ##Instalação e Execução(Linux)
-Este exercício contém um shell script de instalação(install.sh) que só deverá ser usado caso o servidor seja Ubuntu e ele esteja limpo. 
+Este exercício contém scripts para instalação(install.sh e install.git.sh) que só deverão ser usados caso o servidor seja Ubuntu e ele esteja limpo(sem nada instalado).
 
-Abra o terminal e cole: 
+Utilize o comando abaixo, caso deseje que o script clone o projeto do github:
 ```html
-wget https://raw.githubusercontent.com/brab0/api-tiny-url/master/install.sh && chmod +x install.sh && ./install.sh
+wget https://raw.githubusercontent.com/brab0/api-tiny-url/master/install.git.sh && chmod +x install.git.sh && ./install.git.sh
 ```
-
-O comando acima irá baixar o arquivo install.sh via wget, dar permissão de execução e executá-lo. Durante as atualizações e instalações, serão exibidos prompts para aceitar os pacotes, digite y para todos. Ao final das instalaçes, os script irá executar automaticamente o arquivo start.sh, que irá iniciar o banco de dados, os testes e ao, final a aplicação. O mongo e a instancia(s) da api utilizam aqui o PM2 como gerenciador de processos.
-
-O mesmo resultado pode ser obtido fazendo o download do zip do projeto(ou clonando) e executando. Após extrair e entrar no projeto:
+Caso já tenha clonado ou feito o download por conta própria, você deverá executar dentro da pasta do projeto o script install.sh, como mostrado abaixo:
 ```html
 ˜# chmod +x install.sh && ./install.sh
 ```
 
-Caso todas as instalações para este projeto já tenham sido feitas, ele pode ser executado dentro do projeto com:
+Durante as atualizações e instalações, serão exibidos prompts para aceitar os pacotes, digite y para todos.
+Ao final das instalações, será executado automaticamente o arquivo start.sh, que irá iniciar o banco de dados, os testes e, ao final, a API. Mongo e instância(s) da api utilizam o PM2 como gerenciador de processos.
+
+O arquivo start.sh, que inicia o banco, testes e o projeto com PM2, também pode ser executado à parte. Para isto, dentro da pasta do projeto, execute:
 ```html
 ˜# chmod +x start.sh && ./start.sh
 ```
 
-É importante ressaltar que os scripts .sh foram criados para instalar e executar o projeto em um ambiente sem nada. Porém, é possível instalar e executar o projeto de forma convencional, caso o servidor já possua pelo menos node + mongo. Desta forma:
+O projeto também pode ser instalado de forma convencional, caso o servidor já possua pelo menos NodeJs + MongoDB. Para isto, com o banco no ar(sudo mongod), execute:
 ```html
-˜# sudo mongod
-˜# npm install
-˜# npm install-dev
+˜# npm install && npm install-dev
 ˜# npm start
 ```
 
 ##Testes
-Para este projeto, foram utilizados o ChaiJs(BDD assertion library) e o Mocha Framework. Para um caso específico(retorno 301), foi utilizado o Supertest, pois o Chai não estava conseguindo manipular a resposta...e não tive tempo pra investigar o por quê. Para a execução somente dos testes(com o banco no ar):
+Para este projeto foram utilizados o ChaiJs(BDD assertion library) e o Mocha Framework. Para um caso específico(retorno 301), foi utilizado o Supertest, pois o Chai não estava conseguindo manipular a resposta...e não tive tempo pra investigar o por quê =/. Para a execução somente dos testes(com o banco no ar), execute:
 ```html
 ˜# npm test
 ```
@@ -71,7 +80,7 @@ Cadastra uma nova url. Se o userid não existe, retorna 404.
 ###GET /stats
 - Retorna estatísticas globais do sistema.
 
-response body:
+res.data:
 ```html
 {
   "hits": 193841, // Quantidade de hits em todas as urls do sistema
@@ -94,7 +103,7 @@ Caso o usuário não exista o retorno deverá ser com código 404 Not Found.
 
 ###GET /stats/:id
 Retorna estatísticas de uma URL específica.
-- response body:
+- res.data:
 ```html
 {
   "id": "23094", // ID da url
@@ -110,6 +119,7 @@ Apaga uma URL. Retorna vazio em caso de sucesso e 404 caso não ache o id.
 ###POST /users
 Cria um usuário, retorna 201 Created e um objeto JSON no formato a seguir. Caso já exista um usuário com o mesmo id, retorna 409 Conflict.
 
+req.body
 ```html
 {
   "id": "brab0"

@@ -58,8 +58,6 @@ describe('Stats', () => {
         let url = { url : 'http://chaordic.com.br/folks'};
         let user = new User({ id : 'jibao' });
 
-
-
         user.save((err, user) => {
           chai.request(server)
           .post('/users/' + user.id + '/urls')

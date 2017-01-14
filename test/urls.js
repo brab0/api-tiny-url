@@ -8,7 +8,6 @@ let mongoose = require("mongoose"),
 
 let request = require('supertest')(server);
 
-
 let User = mongoose.model('User'),
     Url = mongoose.model('Url');
 

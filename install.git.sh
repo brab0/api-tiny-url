@@ -55,6 +55,13 @@ sudo pm2 install pm2-mongodb
 clear
 
 #download api
+echo '***********************************'
+echo '* Clonando API Tiny URl do Github *'
+echo '***********************************'
+sudo git clone https://github.com/brab0/api-tiny-url.git
+cd api-tiny-url
+
+#download api
 echo '**************************************'
 echo '* Instalando Dependências do projeto *'
 echo '**************************************'
