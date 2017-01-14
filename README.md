@@ -17,7 +17,10 @@ Para este exercício, foi utilizado um padrão orientado por controllers, models
 ##Instalação e Execução(Linux)
 Este exercício contém um shell script de instalação(install.sh) que só deverá ser usado caso o servidor seja Ubuntu e ele esteja limpo. 
 
-Abra o terminal e cole: wget https://raw.githubusercontent.com/brab0/api-tiny-url/master/install.sh && chmod +x install.sh && ./install.sh
+Abra o terminal e cole: 
+```html
+wget https://raw.githubusercontent.com/brab0/api-tiny-url/master/install.sh && chmod +x install.sh && ./install.sh
+```
 
 O comando acima irá baixar o arquivo install.sh via wget, dar permissão de execução e executá-lo. Durante as atualizações e instalações, serão exibidos prompts para aceitar os pacotes, digite y para todos. Ao final das instalaçes, os script irá executar automaticamente o arquivo start.sh, que iniciar o banco de dados, os testes e ao, final a aplicação. O mongo e a instancia(s) da api utilizam aqui o PM2 como gerenciador de processos.
 
