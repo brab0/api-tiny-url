@@ -120,4 +120,4 @@ Cria um usuário, retorna 201 Created e um objeto JSON no formato a seguir. Caso
 Apaga um usuário. Se não encontrar id, retorna 404.
 
 ##Considerações
-- Alguns scripts da instalação e execução(PM2 -> Docker), poderiam ter sido melhor escritos com Docker. Infelizmente não foi possível fazêlos por motivos de tempo.
+- Alguns scripts da instalação e execução(PM2 -> Docker), poderiam ter sido melhor escritos com Docker. Infelizmente não foi possível fazê-los por motivos de tempo.
