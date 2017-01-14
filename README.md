@@ -61,11 +61,11 @@ Retorna 301 com location para a página cadastrada. Se o Id não existe, retorna
 
 ###POST /users/:userid/urls
 Cadastra uma nova url. Se o userid não existe, retorna 404.
-- request body:
+- req.body:
 ```html
 {"url" : "http://teste.com"}
 ```
-- response body:
+- res.data:
 ```html
 {
   "id" : "123123",
@@ -76,9 +76,9 @@ Cadastra uma nova url. Se o userid não existe, retorna 404.
 ```
 
 ###GET /stats
-- Retorna estatísticas globais do sistema.
+Retorna estatísticas globais do sistema.
 
-res.data:
+- res.data:
 ```html
 {
   "hits": 193841, // Quantidade de hits em todas as urls do sistema
@@ -96,8 +96,7 @@ res.data:
 }
 ```
 ###GET /users/:userId/stats
-Retorna estatísticas das urls de um usuário. O resultado é o mesmo que GET /stats mas com o escopo dentro de um usuário.
-Caso o usuário não exista o retorno deverá ser com código 404 Not Found.
+Retorna estatísticas das urls de um usuário. O resultado é o mesmo que GET /stats mas com o escopo dentro de um usuário. Caso o usuário não exista o retorno deverá ser com código 404 Not Found.
 
 ###GET /stats/:id
 Retorna estatísticas de uma URL específica.
@@ -115,9 +114,16 @@ Retorna estatísticas de uma URL específica.
 Apaga uma URL. Retorna vazio em caso de sucesso e 404 caso não ache o id.
 
 ###POST /users
-Cria um usuário, retorna 201 Created e um objeto JSON no formato a seguir. Caso já exista um usuário com o mesmo id, retorna 409 Conflict.
+Cria um usuário, retorna 201 Created e um objeto JSON. Caso já exista um usuário com o mesmo id, retorna 409 Conflict.
 
-req.body
+- req.body
+```html
+{
+  "id": "brab0"
+}
+```
+
+- res.data
 ```html
 {
   "id": "brab0"
