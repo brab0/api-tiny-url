@@ -4,7 +4,7 @@
 API RESTfull para encurtar urls desenvolvida com NodeJs, ExpressJs, Mongoose e MongoDB. 
 
 ##Estrutura
-Para este exercício, foi utilizado um padrão orientado por controllers, models e services. Onde os serviços basicamente são roteadores que só recebem e respondem às requisições. Os controllers tratam de todo o processamento e formatação das requisições e das respostas enviadas. E finalmente, os modelos abarcam os Schemes do mongoose e métodos pertinentes a eles. Desta forma, conseguiu-se uma boa modularidade para reaproveitamento de código e fácil manutenção.
+Para este exercício, foi utilizado um padrão orientado por controllers, models e services. Onde os serviços basicamente são roteadores que só recebem e respondem às requisições. Os controllers tratam de todo o processamento e formatação das requisições e das respostas enviadas. E finalmente, os modelos abarcam os Schemes do mongoose e métodos pertinentes à manipulação do banco de dados. Desta forma, conseguiu-se uma boa modularidade para reaproveitamento de código e fácil manutenção.
 ```html
 |-config
 |-core
