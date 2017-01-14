@@ -10,7 +10,7 @@ API RESTfull para encurtar urls.
 - Mocha, ChaiJs e Supertest
 - PM2, se instalado e executado a partir dos scripts .sh (opcional)
 ```
-OBS: Para uma programação mais funcional, foram utilizados recursos e sintaxe pertinentes ao EC6. Por isto, para o funcionamento esperado do projeto, é necessária a instalação da última versão estável do NodeJs.
+OBS: Para uma programação mais funcional, foram utilizados recursos e sintaxe pertinentes ao ES6. Por isto, para o funcionamento esperado do projeto, é necessária a instalação da última versão estável do NodeJs.
 
 ##Estrutura
 Para este exercício, foi utilizado um padrão orientado por controllers, models e services. Onde os serviços basicamente são roteadores que só recebem e respondem às requisições. Os controllers tratam de todo o processamento e formatação das requisições e das respostas. E finalmente, os models, que registram os Schemes do mongoose e declaram os métodos responsáveis pelas consultas do banco de dados. O objetivo é conseguir uma boa modularidade para reaproveitamento de código e fácil manutenção.
