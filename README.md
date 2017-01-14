@@ -22,7 +22,7 @@ Abra o terminal e cole:
 wget https://raw.githubusercontent.com/brab0/api-tiny-url/master/install.sh && chmod +x install.sh && ./install.sh
 ```
 
-O comando acima irá baixar o arquivo install.sh via wget, dar permissão de execução e executá-lo. Durante as atualizações e instalações, serão exibidos prompts para aceitar os pacotes, digite y para todos. Ao final das instalaçes, os script irá executar automaticamente o arquivo start.sh, que iniciar o banco de dados, os testes e ao, final a aplicação. O mongo e a instancia(s) da api utilizam aqui o PM2 como gerenciador de processos.
+O comando acima irá baixar o arquivo install.sh via wget, dar permissão de execução e executá-lo. Durante as atualizações e instalações, serão exibidos prompts para aceitar os pacotes, digite y para todos. Ao final das instalaçes, os script irá executar automaticamente o arquivo start.sh, que irá iniciar o banco de dados, os testes e ao, final a aplicação. O mongo e a instancia(s) da api utilizam aqui o PM2 como gerenciador de processos.
 
 O mesmo resultado pode ser obtido fazendo o download do zip do projeto(ou clonando) e executando. Após extrair e entrar no projeto:
 ```html
