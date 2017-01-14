@@ -1,6 +1,4 @@
 #API Tiny Url
-
-##Descrição
 API RESTfull para encurtar urls.
 
 ##Ambiente
