@@ -45,7 +45,7 @@ O arquivo start.sh, que inicia o banco, testes e o projeto com PM2, também pode
 
 O projeto também pode ser instalado de forma convencional, caso o servidor já possua pelo menos NodeJs + MongoDB. Para isto, com o banco no ar(sudo mongod), execute:
 ```html
-˜# npm install && npm install-dev
+˜# npm install
 ˜# npm start
 ```
 
